@@ -1,114 +1,55 @@
-import React from "react";
-import { Dimensions, Image, Platform, StyleSheet, Text, View } from "react-native";
+// components/closetItems.ts
+export interface ClosetItem {
+  id: number;
+  image: string;
+  description: string;
+  category: string;
+  tags: string[];
+}
 
-// Example closet posts with free images
-export const closetItems = [
+const closetItems: ClosetItem[] = [
   {
     id: 1,
-    image: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=400",
-    description: "Casual streetwear vibe",
-    tags: ["#casual", "#streetwear", "#relaxed"],
+    image: "https://images.unsplash.com/photo-1593032465170-87b8b991c9d0?auto=format&fit=crop&w=600&q=80",
+    description: "Top + Jeans combo",
+    category: "Casual",
+    tags: ["#casual", "#denim", "#dailylook"],
   },
   {
     id: 2,
-    image: "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=400",
-    description: "Denim style jeans",
-    tags: ["#denim", "#jeans", "#vintage"],
+    image: "https://images.unsplash.com/photo-1582912220080-380af15208c0?auto=format&fit=crop&w=600&q=80",
+    description: "Jacket fit",
+    category: "Streetwear",
+    tags: ["#streetstyle", "#urban", "#fashion"],
   },
   {
     id: 3,
-    image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=400",
-    description: "Summer dress aesthetic",
-    tags: ["#summer", "#floral", "#light"],
+    image: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=600&q=80",
+    description: "Summer dress",
+    category: "Casual",
+    tags: ["#summer", "#dress", "#chic"],
   },
   {
     id: 4,
-    image: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=400",
-    description: "Leather jacket energy",
-    tags: ["#leather", "#jacket", "#edgy"],
+    image: "https://images.unsplash.com/photo-1532446658420-fbc0ba54b826?auto=format&fit=crop&w=600&q=80",
+    description: "Urban style",
+    category: "Streetwear",
+    tags: ["#urban", "#style", "#trendy"],
   },
   {
     id: 5,
-    image: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=400",
-    description: "Leather jacket energy",
-    tags: ["#leather", "#jacket", "#edgy"],
+    image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80",
+    description: "Chic outfit",
+    category: "Formal",
+    tags: ["#chic", "#workwear", "#fashion"],
   },
   {
     id: 6,
-    image: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=400",
-    description: "Leather jacket energy",
-    tags: ["#leather", "#jacket", "#edgy"],
+    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80",
+    description: "Night look",
+    category: "Evening",
+    tags: ["#party", "#nightout", "#style"],
   },
 ];
 
-
-
-export default function YourCloset() {
-  const screenWidth = Dimensions.get("window").width;
-
-  // Limit container width on web to avoid overly stretched layout
-  const containerMaxWidth = Platform.OS === "web" ? 900 : screenWidth;
-
-  // Number of columns
-  const numColumns = Platform.OS === "web" ? 3 : screenWidth > 600 ? 2 : 1;
-
-  // Calculate post width with more spacing
-  const spacing = 12;
-  const postWidth = (containerMaxWidth - spacing * (numColumns + 1)) / numColumns;
-
-  return (
-    <View style={[styles.outerContainer, { maxWidth: containerMaxWidth, alignSelf: "center" }]}>
-      {closetItems.map((item) => (
-        <View
-          key={item.id}
-          style={[
-            styles.postContainer,
-            { width: postWidth, marginLeft: spacing, marginBottom: spacing },
-          ]}
-        >
-          <Image source={{ uri: item.image }} style={styles.postImage} />
-          <View style={styles.postContent}>
-            <Text style={styles.description}>{item.description}</Text>
-            <Text style={styles.tags}>{item.tags.join(" ")}</Text>
-          </View>
-        </View>
-      ))}
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  outerContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "flex-start",
-    paddingVertical: 16,
-  },
-  postContainer: {
-    backgroundColor: "#fff",
-    borderRadius: 20, 
-    overflow: "hidden",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 5, 
-  },
-  postImage: {
-    width: "100%",
-    height: 350, 
-    resizeMode: "cover",
-  },
-  postContent: {
-    padding: 14,
-  },
-  description: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 6,
-  },
-  tags: {
-    fontSize: 14,
-    color: "#555",
-  },
-});
+export default closetItems;
